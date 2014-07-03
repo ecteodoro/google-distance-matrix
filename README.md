@@ -13,7 +13,10 @@ var distance = require('google-distance-matrix');
 var origins = ['San Francisco CA', '40.7421,-73.9914'];
 var destinations = ['New York NY', 'Montreal', '41.8337329,-87.7321554', 'Honolulu'];
 
-function onMatrix(err, distances) {
+distance.key('<Your API key here>');
+distance.units('imperial');
+
+distance.matrix(origins, destinations, function (err, distance0 {
     if (err) {
         return console.log(err);
     }
@@ -32,14 +35,7 @@ function onMatrix(err, distances) {
                     console.log(destination + ' is not reachable by land from ' + origin);
                 }
             }
-
         }
-
     }
-}
-
-//distance.key('<Your API key here>');
-distance.units('imperial');
-
-distance.matrix(origins, destinations, onMatrix);
+});
 ```
