@@ -1,4 +1,4 @@
-#Node.js wrapper for Google Distance Matrix API====================================================
+#Node.js wrapper for Google Distance Matrix API
 
 The Google Distance Matrix API is a service that provides travel distance and time for a matrix of origins and destinations. The information returned is based on the recommended route between start and end points, as calculated by the Google Maps API, and consists of rows containing duration and distance values for each pair.
 
