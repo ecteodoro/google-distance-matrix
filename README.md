@@ -16,7 +16,7 @@ var destinations = ['New York NY', 'Montreal', '41.8337329,-87.7321554', 'Honolu
 distance.key('<Your API key here>');
 distance.units('imperial');
 
-distance.matrix(origins, destinations, function (err, distance) {
+distance.matrix(origins, destinations, function (err, distances) {
     if (err) {
         return console.log(err);
     }
