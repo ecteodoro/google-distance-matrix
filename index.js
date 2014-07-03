@@ -32,16 +32,11 @@ var GoogleDistanceMatrix = function () {
 };
 
 function formatLocations (locations) {
-    /*locations.forEach(function(element, index, array){
-        array[index] = element.split(' ').join('+');
-    });*/
-    console.log(locations.join(SEPARATOR));
     return locations.join(SEPARATOR);
 }
 
 function makeRequest (options, callback) {
     var requestURL = GOOGLE_DISTANCE_API_URL + qs.stringify(options);
-    console.log(requestURL);
     request(requestURL, function(err, response, data) {
         if (err || response.statusCode != 200) {
             return callback(new Error('Google API request error: ' + data));
