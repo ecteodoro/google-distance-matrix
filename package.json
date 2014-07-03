@@ -1,0 +1,32 @@
+{
+  "name": "google-distance-matrix",
+  "version": "0.0.1",
+  "description": "A Node.js wrapper for Google Maps Distance Matrix API",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://ecteodoro@github.com/ecteodoro/google-distance-matrix.git"
+  },
+  "keywords": [
+    "google",
+    "distance",
+    "matrix",
+    "api",
+    "maps",
+    "json",
+    "node"
+  ],
+  "author": "Ecil Teodoro",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/ecteodoro/google-distance-matrix/issues"
+  },
+  "homepage": "https://github.com/ecteodoro/google-distance-matrix",
+  "dependencies": {
+    "qs": "^0.6.6",
+    "request": "^2.36.0"
+  }
+}
