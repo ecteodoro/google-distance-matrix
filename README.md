@@ -4,6 +4,8 @@ The Google Distance Matrix API is a service that provides travel distance and ti
 
 Please refer to [Google Distance Matrix API](https://developers.google.com/maps/documentation/distancematrix/) documentation for further details on **request parameters** and **response format**. 
 
+Unlike similar modules, this one accepts multiple origins and the result data is just like the one returned by the Google API.
+
 ##Installation
 
 `npm install google-distance-matrix`
