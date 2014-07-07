@@ -14,8 +14,8 @@ Unlike similar modules, this one accepts multiple origins and the result data is
 ```javascript
 var distance = require('google-distance-matrix');
 
-distance.key('<Your API key here>');
-distance.units('imperial');
+var origins = ['San Francisco CA'];
+var destinations = ['New York NY', '41.8337329,-87.7321554'];
 
 distance.matrix(origins, destinations, function (err, distances) {
     if (!err)
