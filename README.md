@@ -10,7 +10,90 @@ Unlike similar modules, this one accepts multiple origins and the result data is
 
 `npm install google-distance-matrix`
 
-##Example usage
+##Usage
+```javascript
+var distance = require('google-distance-matrix');
+
+distance.key('<Your API key here>');
+distance.units('imperial');
+
+distance.matrix(origins, destinations, function (err, distances) {
+    if (!err)
+        console.log(distances);
+}
+```
+##Parameters
+
+###API Key
+
+Please read the [API Key](https://developers.google.com/maps/documentation/distancematrix/#api_key) documentation first.
+
+If using a **key**:
+
+* There are 2 options to define the key:  
+
+1. Create an environment variable `GOOGLE_API_KEY`  
+2. Programatically: 
+```javascript
+distance.key('YOUR-API-KEY');
+```
+
+* If using **client** and **signature**:  
+
+1. Create environment variables `GOOGLE_CLIENT_KEY` and `GOOGLE_SIGNATURE_KEY`
+2. Programmatically: 
+```javascript
+distance.client('YOUR-CLIENT-KEY');
+distance.signature('YOUR-SIGNATURE');
+```
+
+###Options
+
+Mode (optional): `driving | walking | bicycling`, default `driving`  
+
+```javascript
+distance.mode('driving');
+```
+
+Language (optional): default `en`
+
+```javascript
+distance.language('pt');
+```
+
+Avoid (optional): `tolls | highways | ferries`, default: `null`
+
+```javascript
+distance.avoid('tolls');
+```
+
+Units (optional): `metric | imperial`, default: `metric`
+
+```javascript
+distance.units('imperial');
+```
+
+Departure time (optional): desired time of departure as seconds since midnight, January 1, 1970 UTC
+
+```javascript
+distance.departure_time(1404696787);
+```
+
+###Origins
+An array of one or more addresses and/or textual latitude/longitude values from which to calculate distance and time. If you pass an address as a string, the service will geocode the string and convert it to a latitude/longitude coordinate to calculate directions. If you pass coordinates, ensure that no space exists between the latitude and longitude values.
+```javascript
+...
+var origins = ['San Francisco CA', '40.7421,-73.9914'];
+...
+```
+###Destinations
+An array of one or more addresses and/or textual latitude/longitude values to which to calculate distance and time. If you pass an address as a string, the service will geocode the string and convert it to a latitude/longitude coordinate to calculate directions. If you pass coordinates, ensure that no space exists between the latitude and longitude values.
+```javascript
+...
+var destinations = ['New York NY', 'Montreal', '41.8337329,-87.7321554', 'Honolulu'];
+...
+```
+##Example
 
 ```javascript
 var distance = require('google-distance-matrix');
