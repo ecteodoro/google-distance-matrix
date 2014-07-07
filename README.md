@@ -32,7 +32,7 @@ If using a **key**:
 
 * There are 2 options to define the key:  
 
-1. Create an environment variable `GOOGLE_API_KEY`  
+1. Create an environment variable `GOOGLE_API_KEY`, or...  
 2. Programatically: 
 ```javascript
 distance.key('YOUR-API-KEY');
@@ -40,7 +40,7 @@ distance.key('YOUR-API-KEY');
 
 * If using **client** and **signature**:  
 
-1. Create environment variables `GOOGLE_CLIENT_KEY` and `GOOGLE_SIGNATURE_KEY`
+1. Create environment variables `GOOGLE_CLIENT_KEY` and `GOOGLE_SIGNATURE_KEY`, or...  
 2. Programmatically: 
 ```javascript
 distance.client('YOUR-CLIENT-KEY');
