@@ -1,7 +1,7 @@
 'use strict';
 
 var request = require('request'),
-    qs      = require('qs');
+    qs      = require('qs-google-signature');
 
 var GOOGLE_DISTANCE_API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json?',
     SEPARATOR = '|',
@@ -36,7 +36,7 @@ function formatLocations (locations) {
 }
 
 function makeRequest (options, callback) {
-    var requestURL = GOOGLE_DISTANCE_API_URL + qs.stringify(options);
+    var requestURL = GOOGLE_DISTANCE_API_URL + qs.stringify(options, GOOGLE_DISTANCE_API_URL);
     request(requestURL, function(err, response, data) {
         if (err || response.statusCode != 200) {
             return callback(new Error('Google API request error: ' + data));
@@ -119,8 +119,3 @@ GoogleDistanceMatrix.prototype.signature = function (signature) {
 }
 
 module.exports = new GoogleDistanceMatrix();
-
-
-
-
-
