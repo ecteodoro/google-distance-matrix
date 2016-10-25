@@ -4,6 +4,8 @@ var request = require('request'),
   debug = require('debug')("google:dm"),
   qs = require('qs-google-signature');
 
+var validModes = ['driving', 'walking', 'bicycling', 'transit'];
+
 var GOOGLE_DISTANCE_API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json?',
   SEPARATOR = '|',
 
@@ -79,7 +81,7 @@ GoogleDistanceMatrix.prototype.matrix = function(args, cb) {
 }
 
 GoogleDistanceMatrix.prototype.mode = function(mode) {
-  if (mode != 'driving' && mode != 'walking' && mode != 'bicycling') {
+  if (validModes.indexOf(mode) < 0) {
     throw new Error('Invalid mode: ' + mode);
   }
   this.options.mode = mode;
