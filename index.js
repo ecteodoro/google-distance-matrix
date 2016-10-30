@@ -109,6 +109,10 @@ GoogleDistanceMatrix.prototype.departure_time = function(departure_time) {
   this.options.departure_time = departure_time;
 }
 
+GoogleDistanceMatrix.prototype.arrival_time = function(arrival_time) {
+  this.options.arrival_time = arrival_time;
+}
+
 GoogleDistanceMatrix.prototype.key = function(key) {
   delete this.options.client;
   delete this.options.signature;

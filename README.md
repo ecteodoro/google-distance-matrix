@@ -2,7 +2,7 @@
 
 The Google Distance Matrix API is a service that provides travel distance and time for a matrix of origins and destinations. The information returned is based on the recommended route between start and end points, as calculated by the Google Maps API, and consists of rows containing duration and distance values for each pair.
 
-Please refer to [Google Distance Matrix API](https://developers.google.com/maps/documentation/distancematrix/) documentation for further details on **request parameters** and **response format**. 
+Please refer to [Google Distance Matrix API](https://developers.google.com/maps/documentation/distancematrix/) documentation for further details on **request parameters** and **response format**.
 
 Unlike similar modules, this one accepts multiple origins and the result data is just like the one returned by the Google API.
 
@@ -33,7 +33,7 @@ If using a **key**:
 * There are 2 options to define the key:  
 
 1. Create an environment variable `GOOGLE_API_KEY`, or...  
-2. Programatically: 
+2. Programatically:
 ```javascript
 distance.key('YOUR-API-KEY');
 ```
@@ -41,7 +41,7 @@ distance.key('YOUR-API-KEY');
 * If using **client** and **signature**:  
 
 1. Create environment variables `GOOGLE_CLIENT_KEY` and `GOOGLE_SIGNATURE_KEY`, or...  
-2. Programmatically: 
+2. Programmatically:
 ```javascript
 distance.client('YOUR-CLIENT-KEY');
 distance.signature('YOUR-SIGNATURE');
@@ -77,6 +77,12 @@ Departure time (optional): desired time of departure as seconds since midnight, 
 
 ```javascript
 distance.departure_time(1404696787);
+```
+
+Arrival time (optional): desired time of arrival as seconds since midnight, January 1, 1970 UTC
+
+```javascript
+distance.arrival_time(1404696787);
 ```
 
 ###Origins
