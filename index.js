@@ -44,7 +44,12 @@ function makeRequest(options, callback) {
   debug("request options", options)
   var requestURL = GOOGLE_DISTANCE_API_URL + qs.stringify(options, GOOGLE_DISTANCE_API_URL);
   debug("requestURL", requestURL)
-  request(requestURL, function(err, response, data) {
+  request({
+    url: requestURL,
+    headers: {
+      'Access-Control-Allow-Origin': '*'
+    }
+  }, function(err, response, data) {
     if (err || response.statusCode != 200) {
       return callback(new Error('Google API request error: ' + data));
     }
