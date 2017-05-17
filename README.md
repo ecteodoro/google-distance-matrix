@@ -1,4 +1,4 @@
-#Node.js wrapper for Google Distance Matrix API
+# Node.js wrapper for Google Distance Matrix API
 
 The Google Distance Matrix API is a service that provides travel distance and time for a matrix of origins and destinations. The information returned is based on the recommended route between start and end points, as calculated by the Google Maps API, and consists of rows containing duration and distance values for each pair.
 
@@ -6,11 +6,11 @@ Please refer to [Google Distance Matrix API](https://developers.google.com/maps/
 
 Unlike similar modules, this one accepts multiple origins and the result data is just like the one returned by the Google API.
 
-##Installation
+## Installation
 
 `npm install google-distance-matrix`
 
-##Usage
+## Usage
 ```javascript
 var distance = require('google-distance-matrix');
 
@@ -20,7 +20,7 @@ var destinations = ['New York NY', '41.8337329,-87.7321554'];
 distance.matrix(origins, destinations, function (err, distances) {
     if (!err)
         console.log(distances);
-}
+})
 ```
 ##Parameters
 
@@ -47,7 +47,7 @@ distance.client('YOUR-CLIENT-KEY');
 distance.signature('YOUR-SIGNATURE');
 ```
 
-###Options
+### Options
 
 Mode (optional): `driving | walking | bicycling`, default `driving`  
 
@@ -85,21 +85,21 @@ Arrival time (optional): desired time of arrival as seconds since midnight, Janu
 distance.arrival_time(1404696787);
 ```
 
-###Origins
+### Origins
 An array of one or more addresses and/or textual latitude/longitude values from which to calculate distance and time. If you pass an address as a string, the service will geocode the string and convert it to a latitude/longitude coordinate to calculate directions. If you pass coordinates, ensure that no space exists between the latitude and longitude values.
 ```javascript
 ...
 var origins = ['San Francisco CA', '40.7421,-73.9914'];
 ...
 ```
-###Destinations
+### Destinations
 An array of one or more addresses and/or textual latitude/longitude values to which to calculate distance and time. If you pass an address as a string, the service will geocode the string and convert it to a latitude/longitude coordinate to calculate directions. If you pass coordinates, ensure that no space exists between the latitude and longitude values.
 ```javascript
 ...
 var destinations = ['New York NY', 'Montreal', '41.8337329,-87.7321554', 'Honolulu'];
 ...
 ```
-##Example
+## Example
 
 ```javascript
 var distance = require('google-distance-matrix');
