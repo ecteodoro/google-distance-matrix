@@ -22,9 +22,9 @@ distance.matrix(origins, destinations, function (err, distances) {
         console.log(distances);
 })
 ```
-##Parameters
+## Parameters
 
-###API Key
+### API Key
 
 Please read the [API Key](https://developers.google.com/maps/documentation/distancematrix/#api_key) documentation first.
 
