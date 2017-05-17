@@ -2,7 +2,8 @@
 
 var request = require('request'),
   debug = require('debug')("google:dm"),
-  qs = require('qs-google-signature');
+  qs = require('qs-google-signature'),
+  Promise = require("bluebird");
 
 var validModes = ['driving', 'walking', 'bicycling', 'transit'];
 
@@ -79,6 +80,8 @@ GoogleDistanceMatrix.prototype.matrix = function(args, cb) {
   });
 
 }
+
+GoogleDistanceMatrix.prototype.matrixPromise = Promise.promisify(GoogleDistanceMatrix.prototype.matrix);
 
 GoogleDistanceMatrix.prototype.mode = function(mode) {
   if (validModes.indexOf(mode) < 0) {
