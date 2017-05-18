@@ -1,6 +1,6 @@
 {
   "name": "google-distance-matrix",
-  "version": "0.1",
+  "version": "1.0.0",
   "description": "A Node.js wrapper for Google Maps Distance Matrix API",
   "main": "index.js",
   "scripts": {
