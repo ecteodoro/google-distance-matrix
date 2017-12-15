@@ -5,7 +5,12 @@ var destinations = ['New York NY', 'Montreal', '41.8337329,-87.7321554', 'Honolu
 
 function onMatrix(err, distances) {
     if (err) {
+        // request errors
         return console.log(err);
+    }
+    if (distances.error_message) {
+        // API errors
+        return console.log(distances.error_message);
     }
     if(!distances) {
         return console.log('no distances');
@@ -30,5 +35,23 @@ function onMatrix(err, distances) {
 
 //distance.key('<Your API key here>');
 distance.units('imperial');
+
+// TRANSIT example
+
+distance.mode('transit');
+
+distance.transit_mode('train');
+
+distance.transit_routing_preference('fewer_transfers');
+
+distance.matrix(origins, destinations, onMatrix);
+
+// DRIVING example
+
+distance.mode('driving');
+
+distance.traffic_model('optimistic');
+
+distance.departure_time(1513362478);
 
 distance.matrix(origins, destinations, onMatrix);

@@ -4,7 +4,12 @@ var request = require('request'),
   debug = require('debug')("google:dm"),
   qs = require('qs-google-signature');
 
-var validModes = ['driving', 'walking', 'bicycling', 'transit'];
+var validTravelModes = ['driving', 'walking', 'bicycling', 'transit'];
+var validUnits = ['metric', 'imperial'];
+var validRestrictions = ['tolls', 'highways', 'ferries', 'indoor'];
+var validTrafficModel = ['best_guess', 'pessimistic', 'optimistic'];
+var validTransitMode = ['bus', 'subway', 'train', 'tram', 'rail'];
+var validTransitRoutingPreference = ['less_walking', 'fewer_transfers'];
 
 var GOOGLE_DISTANCE_API_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json?',
   SEPARATOR = '|',
@@ -81,7 +86,7 @@ GoogleDistanceMatrix.prototype.matrix = function(args, cb) {
 }
 
 GoogleDistanceMatrix.prototype.mode = function(mode) {
-  if (validModes.indexOf(mode) < 0) {
+  if (validTravelModes.indexOf(mode) < 0) {
     throw new Error('Invalid mode: ' + mode);
   }
   this.options.mode = mode;
@@ -92,14 +97,14 @@ GoogleDistanceMatrix.prototype.language = function(language) {
 }
 
 GoogleDistanceMatrix.prototype.avoid = function(avoid) {
-  if (avoid != 'tolls' && avoid != 'highways' && avoid != 'ferries') {
+  if (validRestrictions.indexOf(avoid) < 0) {
     throw new Error('Invalid restriction: ' + avoid);
   }
   this.options.avoid = avoid;
 }
 
 GoogleDistanceMatrix.prototype.units = function(units) {
-  if (units != 'metric' && units != 'imperial') {
+  if (validUnits.indexOf(units) < 0) {
     throw new Error('Invalid units: ' + units);
   }
   this.options.units = units;
@@ -127,6 +132,29 @@ GoogleDistanceMatrix.prototype.client = function(client) {
 GoogleDistanceMatrix.prototype.signature = function(signature) {
   delete this.options.key;
   this.options.signature = signature;
+}
+
+GoogleDistanceMatrix.prototype.traffic_model = function(trafficModel) {
+  this.options.traffic_model = trafficModel;
+}
+
+GoogleDistanceMatrix.prototype.transit_mode = function(transitMode) {
+  this.options.transit_mode = transitMode;
+}
+
+GoogleDistanceMatrix.prototype.transit_routing_preference = function(transitRoutingPreference) {
+  this.options.transit_routing_preference = transitRoutingPreference;
+}
+
+GoogleDistanceMatrix.prototype.reset = function() {
+  this.options = {
+    origins: null,
+    destinations: null,
+    mode: 'driving',
+    units: 'metric',
+    language: 'en',
+    avoid: null
+  };
 }
 
 module.exports = new GoogleDistanceMatrix();
