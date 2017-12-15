@@ -38,7 +38,7 @@ If using a **key**:
 distance.key('YOUR-API-KEY');
 ```
 
-* If using **client** and **signature**:  
+If using **client** and **signature**:  
 
 1. Create environment variables `GOOGLE_CLIENT_KEY` and `GOOGLE_SIGNATURE_KEY`, or...  
 2. Programmatically:
@@ -49,7 +49,7 @@ distance.signature('YOUR-SIGNATURE');
 
 ### Options
 
-Mode (optional): `driving | walking | bicycling`, default `driving`  
+Mode (optional): `driving | walking | bicycling | transit`, default `driving`  
 
 ```javascript
 distance.mode('driving');
@@ -61,7 +61,7 @@ Language (optional): default `en`
 distance.language('pt');
 ```
 
-Avoid (optional): `tolls | highways | ferries`, default: `null`
+Avoid (optional): `tolls | highways | ferries | indoor`, default: `null`
 
 ```javascript
 distance.avoid('tolls');
@@ -83,6 +83,24 @@ Arrival time (optional): desired time of arrival as seconds since midnight, Janu
 
 ```javascript
 distance.arrival_time(1404696787);
+```
+
+Traffic model (this parameter may only be specified for requests where the travel mode is `driving`, and where the request includes a `departure_time`): `best_guess | pessimistic | optimistic`, default `best_guess`
+
+```javascript
+distance.traffic_model('optimistic');
+```
+
+Transit mode (this parameter may only be specified for requests where the `mode` is `transit`): `bus | subway | train | tram | rail` 
+
+```javascript
+distance.transit_mode('rail');
+```
+
+Transit routing preference (this parameter may only be specified for requests where the `mode` is `transit`): `less_walking | fewer_transfers`
+
+```javascript
+distance.transit_routing_preference('fewer_transfers');
 ```
 
 ### Origins
