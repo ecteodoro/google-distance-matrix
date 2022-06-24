@@ -140,7 +140,7 @@ distance.matrix(origins, destinations, function (err, distances) {
             for (var j = 0; j < destinations.length; j++) {
                 var origin = distances.origin_addresses[i];
                 var destination = distances.destination_addresses[j];
-                if (distances.rows[0].elements[j].status == 'OK') {
+                if (distances.rows[i].elements[j].status == 'OK') {
                     var distance = distances.rows[i].elements[j].distance.text;
                     console.log('Distance from ' + origin + ' to ' + destination + ' is ' + distance);
                 } else {
